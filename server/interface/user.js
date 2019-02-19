@@ -45,35 +45,6 @@ router.get('/ttt', async(ctx, next) => {
   }
 })
 
-// router.post('/registerTest', async (ctx, next) => {
-//   let {username, password, phone, verifyCode} = ctx.request.body
-//   let id = Math.random().toString(16).slice(2,15)
-//   Store.hset('usersData', username , id)
-//   console.log(numb)
-//   let newUser = new User({
-//     username,
-//     password,
-//     phone,
-//     id
-//   })
-//   await newUser.save()
-//   ctx.body = {
-//     code: 0,
-//     msg: '注册成功'
-//   }
-// })
-
-
-// router.get('/getUserIdByUsername' , async (ctx, next) => {
-//   // let username =  ctx.request.query.username
-//   let username = ctx.session.passport.user.username
-//   console.log('getUserIdByUsername',username)
-//   let result = await User.findOne({username})
-//   ctx.body = {
-//     code: 0,
-//     id: result.id
-//   }
-// })
 
 router.get('/checkUser', async (ctx, next) => {
   let username = ctx.request.query.username

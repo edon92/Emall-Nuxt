@@ -53,7 +53,7 @@ export default {
   watch: {},
   created() {},
   mounted() {
-    // console.log('111',this.addressInfo)
+    // ('111',this.addressInfo)
   },
   methods: {
     onSave(address) {
@@ -61,16 +61,13 @@ export default {
       // 如果是点编辑的话，则去数据库修改
       if (this.isEditingPage) {
         //请求后台修改
-        console.log("后台修改", address);
         this.updataAddress(address);
       } else {
         //如果是点添加地址
-        console.log("添加新地址", address);
         this.submitNewAddress(address);
       }
     },
     onDelete(address) {
-      console.log("onDelete",address);
       let data = {
         userId: address.userId,
         id: address.id
@@ -79,7 +76,7 @@ export default {
         if(res.status === 200) {
           if(res.data.code === 0) {
             this.$toast('删除成功')
-            // window.location.reload()
+            window.location.reload()
           }
         } else {
           this.$toast('请稍后再试')
@@ -87,7 +84,6 @@ export default {
       })
     },
     onChangeDetail() {
-      console.log("onChangeDetail");
     },
     onClickLeft() {
       this.$emit("back");

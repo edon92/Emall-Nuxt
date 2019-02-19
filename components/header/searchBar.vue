@@ -31,17 +31,12 @@ export default {
   },
   methods: {
     onCancel() {
-      console.log("cancle");
     },
     onFocus() {
       this.value = "奶茶";
     },
     onSearch() {
-      // GoodModle._searchByKeyword(this.value).then(res => {
-      //   console.log(res)
-      // })
       if (this.value) {
-        console.log(this.$route.path);
         this.$router.push(`/searchResult?keyword=${this.value}`);
         if (this.$route.path === "/searchResult") {
           window.location.reload()

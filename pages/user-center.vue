@@ -77,7 +77,6 @@ export default {
       this.show = true;
     },
     onSelect(e) {
-      console.log(e);
       if (e.name == "退出登录") {
         this.clickLogout();
       }

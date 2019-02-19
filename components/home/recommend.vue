@@ -76,7 +76,6 @@ export default {
       this.$router.push(`/detail?goodsId=${goodsId}`);
     },
     handleTouchStart() {
-      console.log('1')
       if(!this.ifDrag) return
       this.ifDrag = false
     },

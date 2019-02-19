@@ -12,8 +12,6 @@ export default {
     MFooter
   },
   created() {
-    // this.$router.push('./home')
-    console.log(this.$route.path)
   }
 }
 </script>

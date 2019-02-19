@@ -1,7 +1,7 @@
 const Koa = require('koa')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
-import IndexInterface from './interface/index'
+// import IndexInterface from './interface/index'
 import UserInterface from './interface/user'
 import GoodInterface from './interface/good'
 import OrderInterface from './interface/order'
@@ -45,7 +45,7 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(bodyParser());
-app.use(IndexInterface.routes()).use(IndexInterface.allowedMethods())
+// app.use(IndexInterface.routes()).use(IndexInterface.allowedMethods())
 app.use(UserInterface.routes()).use(UserInterface.allowedMethods())
 app.use(GoodInterface.routes()).use(GoodInterface.allowedMethods())
 app.use(OrderInterface.routes()).use(OrderInterface.allowedMethods())

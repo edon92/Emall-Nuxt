@@ -79,7 +79,6 @@ export default {
           this.showLoading = false
           if (res.data.code == 0) {
             this.orderList = res.data.data;
-            console.log(this.orderList);
           }
         }
         this.serializeData();
@@ -106,7 +105,6 @@ export default {
         }
       });
       this.newOrderList = itemList;
-      console.log(this.newOrderList);
     },
     onClickLeft() {
       this.$router.back();

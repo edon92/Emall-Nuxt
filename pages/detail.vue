@@ -307,7 +307,6 @@ export default {
               this.showLoading = false;
             }, 1500);
             this.goodDetail = res.data.good;
-            console.log(this.goodDetail)
             this.sku.tree[0].v[0].imgUrl = this.goodDetail.IMAGE1;
             this.sku.list[0].price = this.goodDetail.PRESENT_PRICE*100
           }

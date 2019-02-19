@@ -13,7 +13,11 @@
                 :title="item.name"
                 :thumb="item.image"
               />
-              <van-stepper v-model="item.count"/>
+              <van-stepper
+                v-model="item.count"
+                @change="onchange(item.count, item.goodsId)"
+                :data-id="item.goodsId"
+              />
             </van-cell-group>
             <div slot="right" class="right">
               <van-button size="mini" type="danger" @click="deleteGood(item.goodsId)">删除</van-button>
@@ -35,7 +39,7 @@ import UserService from "../service/user";
 // import EditAddress from '@/components/orderConfirm/editAddress'
 export default {
   components: {
-    Scroll,
+    Scroll
     // EditAddress
   },
   layout: "login",
@@ -62,7 +66,6 @@ export default {
   mounted() {},
   activated() {
     this.getShopcartInfo();
-    console.log(this.cartInfo)
   },
   methods: {
     setDomHeight() {
@@ -71,11 +74,18 @@ export default {
       let dom = document.getElementsByClassName("hook")[0];
       dom.style.height = height - 60 - 46 + "px";
     },
+    onchange(count, id) {
+      let cartInfo = localStorage.cartInfo
+        ? JSON.parse(localStorage.cartInfo)
+        : [];
+      let index = cartInfo.findIndex(cart => cart.goodsId == id);
+      cartInfo[index].count = count;
+      localStorage.cartInfo = JSON.stringify(cartInfo);
+    },
     deleteGood(id) {
       let cartInfo = JSON.parse(localStorage.cartInfo);
-      let index = cartInfo.findIndex(item => item.goodsId == id)
-      // console.log(cartInfo,index,id)
-      cartInfo.splice(index, 1)
+      let index = cartInfo.findIndex(item => item.goodsId == id);
+      cartInfo.splice(index, 1);
       localStorage.cartInfo = JSON.stringify(cartInfo);
       this.cartInfo = JSON.parse(localStorage.cartInfo);
     },
@@ -93,21 +103,21 @@ export default {
       this.submiting = true;
       UserService._checkLogin().then(res => {
         this.submiting = false;
-        if(res.status === 200) {
-          if(res.data.code === 10) {
-            this.$toast('请先登录')
+        if (res.status === 200) {
+          if (res.data.code === 10) {
+            this.$toast("请先登录");
             setTimeout(() => {
-              this.$router.push('/login')
-            },300)
-            return
+              this.$router.push("/login");
+            }, 300);
+            return;
           }
-          if(res.data.code === 0) {
-            this.$router.push('/confirmOrder')
+          if (res.data.code === 0) {
+            this.$router.push("/confirmOrder");
           }
-        }else {
-          this.$toast('哪里出错了，请稍后再试')
+        } else {
+          this.$toast("哪里出错了，请稍后再试");
         }
-      })
+      });
     }
   }
 };
@@ -116,7 +126,7 @@ export default {
 @import '~assets/stylus/variable.styl'
 .container >>> .van-button
   background: #ff976a
-  border: 1px solid #ff976a;
+  border: 1px solid #ff976a
 .container
   background: #fff
   .scroll
@@ -126,9 +136,9 @@ export default {
       bottom-1px(#333)
       margin-top: 10px
       // .van-swipe-cell__right
-      //   display: flex
-      //   align-items: center
-      //   justify-content: center
+      // display: flex
+      // align-items: center
+      // justify-content: center
       .right
         height: 100%
         .van-button--danger
@@ -151,5 +161,5 @@ export default {
     left: 0px
     right: 0px
     text-align: center
-    opacity: .2
+    opacity: 0.2
 </style>

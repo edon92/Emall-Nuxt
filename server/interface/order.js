@@ -169,7 +169,6 @@ router.get('/getOrderList', async (ctx,next) => {
       let user = await UserModel.findOne({username})
       userId = user.id
     }
-    console.log('getOrderList', username, userId)
     let result = await OrderModel.find({userId})
     ctx.body = {
       code: 0,

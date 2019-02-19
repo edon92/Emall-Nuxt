@@ -68,7 +68,6 @@ export default {
       this.$router.back();
     },
     resetPassword() {
-      console.log("忘记密码");
     },
     toRegister() {
       this.$router.push("/register");

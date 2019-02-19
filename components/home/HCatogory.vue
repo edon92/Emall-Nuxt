@@ -27,7 +27,6 @@ export default {
   watch: {},
   created() {},
   mounted() {
-    // console.log(this.Hcatogory)
   },
   methods: {
     selectType(index) {

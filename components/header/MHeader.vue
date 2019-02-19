@@ -40,11 +40,9 @@ export default {
   },
   methods: {
     ToCatogory() {
-      console.log("click");
       this.$router.push("./category");
     },
     ToLogin() {
-      console.log(1244443);
       this.$router.push("./login");
     },
     logout() {

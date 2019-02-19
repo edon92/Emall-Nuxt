@@ -22,7 +22,6 @@ export default {
   created() {
     GoodService._getCategory().then(res => {
       this.tabData = res.data.CategoryList.reverse();
-      console.log("tab", this.tabData);
       this.$emit("loadFinished");
       let loadType = this.$route.query.type;
       if (!loadType) {

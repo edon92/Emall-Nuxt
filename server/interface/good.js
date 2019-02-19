@@ -630,7 +630,6 @@ router.get('/getCategorySubList', async(ctx, next) => {
 
 router.get('/searchGoods', async (ctx, next) => {
   try {
-    console.log(ctx.query.keyword)
     let result = await GoodModel.find({NAME: new RegExp(ctx.query.keyword)})
     ctx.body = {
       code: 0,
@@ -689,7 +688,6 @@ router.get('/getGoodsList2', async(ctx, next) => {
 router.post('/serchGoods', async(ctx, next) => {
   try {
     let goodsListId = ctx.request.body.goodsListId
-    console.log(goodsListId)
     let result = await GoodModel.find({NAME: goodsListId})
     ctx.body= {
       code: 0 ,

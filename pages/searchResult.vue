@@ -56,12 +56,10 @@ export default {
       this.$router.back();
     },
     toDetail(id) {
-      console.log(id)
       this.$router.push(`/detail?goodsId=${id}`)
     },
     _initailData() {
       GoodModle._searchByKeyword(this.$route.query.keyword).then(res => {
-        console.log(res);
         if (res.status === 200) {
           if (res.data.code === 0) {
             this.resultList = res.data.data;

@@ -123,7 +123,6 @@ export default {
     },
     getAddress() {
       OrderService._getAddress().then(res => {
-        console.log("_getAddress", res);
         if (res.status === 200) {
           if (res.data.code === 10) {
             this.$toast("请先登录");
@@ -151,7 +150,7 @@ export default {
     },
     //如果没选地址，不让支付
     onPayment() {
-      if (!this.chosenAddressId) {
+      if (typeof(this.chosenAddressId) !== 'number') {
         this.$toast("请选择地址");
         return;
       }
@@ -181,7 +180,6 @@ export default {
       return JSON.stringify(OrderInfo);
     },
     onEdit(item, index) {
-      console.log(item);
       this.selectedAddress = item;
       this.isEditing = true;
       this.isEditPage = true;
@@ -194,7 +192,6 @@ export default {
         .height;
       // let addressHeight = document.getElementsByClassName("address")[0].style.height
       // let vanSubmitBarHeight = document.getElementsByClassName("van-submit-bar")[0].style.height
-      console.log(document.getElementsByClassName("header")[0].style.height);
       dom.style.height = height - 46 - 50 - 180 - 50 + "px";
     }
   }

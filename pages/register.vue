@@ -132,7 +132,6 @@ export default {
       }
       // 然后去检查数据库
       UserService._checkUser(this.username).then(res => {
-        console.log(res)
         if(res.data.code === 0) {
           this.errUser = res.data.msg
         }
@@ -204,7 +203,6 @@ export default {
       }
       //请求服务器
       UserService._register(this.username,this.password,this.phoneNum,this.code).then(res => {
-        console.log(res)
         if(res.data.code ===0) {
           this.showLoading = false
           this.$toast(res.data.msg)

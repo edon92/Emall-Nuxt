@@ -115,7 +115,6 @@ export default {
     },
     // this.loading = false会执行的函数
     onLoad() {
-      // console.log("vant onload");
       // this.loading = false;
     },
     // better-scroll 滚动到底部回调
@@ -123,7 +122,6 @@ export default {
       this.page++;
       this.loading = true;
       this.showLoadingGoods = true;
-      console.log(this.page);
       if (this.page >= this.maxPage) {
         this.finished = true;
         this.loading = false;
@@ -136,7 +134,6 @@ export default {
     },
     // 加载 大分类下的小类
     loadType(id) {
-      console.log(id);
       this.page = 1;
       this.isRefresh = true;
       GoodsService._getCategorySubList(id).then(res => {
@@ -145,7 +142,6 @@ export default {
           this.CategorySubList = res.data.CategorySubList;
           this.keyword = this.CategorySubList[0].MALL_SUB_NAME;
           this.currentId = this.CategorySubList[0].ID;
-          console.log("Sub", this.CategorySubList, this.currentId);
           // this.maxPage =
           this.loadGoodsFromSub(this.currentId, this.page);
         }
@@ -156,7 +152,6 @@ export default {
       this.list = [];
       this.page = 1;
       this.keyword = item.MALL_SUB_NAME;
-      // console.log("selectItem", item.MALL_SUB_NAME, item.ID);
       this.currentId = item.ID;
       this.loadGoodsFromSub(this.currentId, this.page);
     },

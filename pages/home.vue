@@ -113,7 +113,6 @@ export default {
   },
   created() {},
   mounted() {
-    console.log("test", this.HomeData);
     this.setDomHeight()
     this._initialScroll();
   },
