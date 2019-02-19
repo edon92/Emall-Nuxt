@@ -1,6 +1,9 @@
 # Nuxt-Emall-app
 
 > My smashing Nuxt.js project
+
+---
+
 > 用Nuxt、mongodb、Redis、koa2做全栈商城Demo
 
 ## Build Setup
