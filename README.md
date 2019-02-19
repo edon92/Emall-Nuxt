@@ -4,7 +4,7 @@
 
 ---
 
-> 用Nuxt、mongodb、Redis、koa2做全栈商城Demo
+> 用Nuxt、mongodb、Redis、koa2做全栈SSR商城Demo
 
 ## Build Setup
 
