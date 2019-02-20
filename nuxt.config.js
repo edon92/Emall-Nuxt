@@ -64,6 +64,16 @@ module.exports = {
   */
  build: {
   productionSourceMap:false,
+  extend (config, ctx) {
+    if (ctx.isClient) {
+      config.module.rules.push({
+        enforce: 'pre',
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        exclude: /(node_modules)/
+      })
+    }
+  }
   // assetsPublicPath: './'
   // babel: {
   //   presets: ['es2015', 'stage-0']
