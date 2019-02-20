@@ -63,7 +63,8 @@ module.exports = {
   ** Build configuration
   */
  build: {
-  productionSourceMap:false
+  productionSourceMap:false,
+  // assetsPublicPath: './'
   // babel: {
   //   presets: ['es2015', 'stage-0']
   // }
