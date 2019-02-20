@@ -26,7 +26,7 @@
     "koa-redis": "^3.1.3",
     "koa-router": "^7.4.0",
     "mongoose": "^5.4.11",
-    "nuxt": "^2.3.4",
+    "nuxt": "^1.4.2",
     "nuxt-stylus-resources-loader": "^2.0.0",
     "passport-local": "^1.0.0",
     "sha1": "^1.1.1",
