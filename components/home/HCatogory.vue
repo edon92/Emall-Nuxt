@@ -56,5 +56,6 @@ export default {
       height: 2.4rem
     .item-name
       margin-top: .6rem
+      font-size: 14px
       // color: #666
 </style>

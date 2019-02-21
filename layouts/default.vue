@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nuxt />
+    <nuxt keep-alive/>
     <m-footer class="m-footer"/>
   </div>
 </template>
@@ -9,9 +9,19 @@
 import MFooter from "@/components/footer/MFooter";
 export default {
   components: {
-    MFooter
+    MFooter,
+    isFirst: false
   },
-  created() {
+  mounted() {
+    // this.$router.push()
+    // console.log(this.$route.path == '/')
+    if(this.$route.path == '/') {
+      this.$router.push('/home')
+    }
+    // if(!this.isFirst) {
+    //   console.log('mounted')
+    //   this.isFirst = true
+    // }
   }
 }
 </script>

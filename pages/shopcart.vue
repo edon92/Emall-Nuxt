@@ -1,8 +1,9 @@
 <template>
   <div class="container">
-    <van-nav-bar title="购物车" left-text="返回" left-arrow @click-left="onClickLeft"/>
-    <scroll class="scroll hook" ref="wrapper" v-show="!isEmpty">
-      <div>
+    <div  class="shopcart-header">
+      <van-nav-bar title="购物车" left-text="返回" left-arrow @click-left="onClickLeft"/>
+    </div>
+    <div class="scroll hook" ref="wrapper" v-show="cartInfo.length">
         <div class="item" v-for="(item, index) in cartInfo" :key="index">
           <van-swipe-cell :right-width="65">
             <van-cell-group>
@@ -24,22 +25,21 @@
             </div>
           </van-swipe-cell>
         </div>
-      </div>
-    </scroll>
+    </div>
     <van-submit-bar :loading="submiting" :price="totalPrice" button-text="提交订单" @submit="onSubmit"/>
-    <div class="empty" v-show="isEmpty">购物车空空如也</div>
-    <div class="desc" v-show="!isEmpty">滑动删除商品</div>
+    <div class="empty" v-show="!cartInfo.length">购物车空空如也</div>
+    <div class="desc" v-show="cartInfo.length">滑动删除商品</div>
     <!-- <edit-address v-if="isEditing"></edit-address> -->
   </div>
 </template>
 
 <script>
-import Scroll from "@/common/components/scroll";
+// import Scroll from "@/common/components/scroll";
 import UserService from "../service/user";
 // import EditAddress from '@/components/orderConfirm/editAddress'
 export default {
   components: {
-    Scroll
+    // Scroll
     // EditAddress
   },
   layout: "login",
@@ -88,18 +88,24 @@ export default {
       cartInfo.splice(index, 1);
       localStorage.cartInfo = JSON.stringify(cartInfo);
       this.cartInfo = JSON.parse(localStorage.cartInfo);
+      console.log(this.cartInfo.length)
     },
     getShopcartInfo() {
       if (localStorage.cartInfo) {
         this.cartInfo = JSON.parse(localStorage.cartInfo);
       }
       this.isEmpty = this.cartInfo.length > 0 ? false : true;
-      this.setDomHeight();
+      // this.setDomHeight();
     },
     onClickLeft() {
       this.$router.back();
     },
     onSubmit() {
+      // console.log('submit')
+      if(this.cartInfo.length == 0) {
+        this.$toast('请先选购商品')
+        return
+      }
       this.submiting = true;
       UserService._checkLogin().then(res => {
         this.submiting = false;
@@ -130,15 +136,12 @@ export default {
 .container
   background: #fff
   .scroll
+    margin-top: 46px
     margin-bottom: 50px
     .item
       position: relative
       bottom-1px(#333)
       margin-top: 10px
-      // .van-swipe-cell__right
-      // display: flex
-      // align-items: center
-      // justify-content: center
       .right
         height: 100%
         .van-button--danger
@@ -148,9 +151,10 @@ export default {
         right: 10px
         bottom: 0.625rem
   .empty
-    background: #fff
+    background: #f9f9f9
     font-size: 18px
-    padding: 20px 10px
+    padding: 0px 10px
+    margin: 50px 0px
     height: 100px
     line-height: 36px
   .van-button
@@ -161,5 +165,12 @@ export default {
     left: 0px
     right: 0px
     text-align: center
-    opacity: 0.2
+    opacity: 0.3
+    font-size: 10px
+  .shopcart-header
+    position: fixed
+    top: 0px
+    left: 0px
+    right: 0px
+    z-index: 2000
 </style>

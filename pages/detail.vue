@@ -7,74 +7,74 @@
       <div class="cart icon" @click="backHome">
         <i class="iconfont icon-shopfill"></i>
       </div>
-      <div class="more icon" @click="goTop">
+      <!-- <div class="more icon" @click="goTop">
         <i class="iconfont icon-huidaodingbu"></i>
-      </div>
+      </div> -->
     </div>
     <div class="detail" ref="wrapper">
-      <div>
-        <div class="mainImg" v-if="goodDetail">
-          <img :src="goodDetail.IMAGE1" alt>
-          <span class="tag-right">正品渊源</span>
-        </div>
-        <div class="good-desc" v-if="goodDetail">
-          <div class="new-price">
-            <span class="price">￥{{goodDetail.PRESENT_PRICE.toFixed(2)}}</span>
-            <span class="activity">活动中</span>
-          </div>
-          <div class="old-price" v-if="goodDetail">
-            <span class="desc">价格</span>
-            <span class="price">￥{{calculatePrice.toFixed(2)}}</span>
-          </div>
-          <div class="desc">
-            <span class="name">{{goodDetail.NAME}}</span>
-          </div>
-          <div class="sales">
-            <div class="delivery-price">运费: 0.00</div>
-            <div class="sale">月销548单</div>
-            <div class="plece">香港</div>
-          </div>
-          <div class="guarantee">
-            <div class="line"></div>
-            <div class="tax item" @click="showTaxDetail">
-              <van-row>
-                <van-col span="4">
-                  <span class="type">税费</span>
-                </van-col>
-                <van-col span="16">
-                  <span class="desc">进口税 商品售价已包税</span>
-                </van-col>
-                <van-col span="4" style="text-align:right">
-                  <i class="iconfont icon-jiantou1"></i>
-                </van-col>
-              </van-row>
-            </div>
-            <div class="serve item" @click="showServeDetail">
-              <van-row>
-                <van-col span="4">
-                  <span class="type">服务</span>
-                </van-col>
-                <van-col span="16">
-                  <span class="desc">支持溯源·破损包退·正品保障</span>
-                </van-col>
-                <van-col span="4" style="text-align:right">
-                  <i class="iconfont icon-jiantou1"></i>
-                </van-col>
-              </van-row>
-            </div>
-          </div>
-          <div class="line"></div>
-          <van-tabs swipeable>
-            <van-tab title="详情">
-              <div class="detail-img" v-html="goodDetail.DETAIL"></div>
-            </van-tab>
-            <van-tab title="评论">
-              <div class="comments" style="height:600px">暂无评论</div>
-            </van-tab>
-          </van-tabs>
-          <!-- <div class="line"></div> -->
-        </div>
+      <!-- <div> -->
+      <div class="mainImg" v-if="goodDetail">
+        <img :src="goodDetail.IMAGE1" alt>
+        <span class="tag-right">正品渊源</span>
       </div>
+      <div class="good-desc" v-if="goodDetail">
+        <div class="new-price">
+          <span class="price">￥{{goodDetail.PRESENT_PRICE.toFixed(2)}}</span>
+          <span class="activity">活动中</span>
+        </div>
+        <div class="old-price" v-if="goodDetail">
+          <span class="desc">价格</span>
+          <span class="price">￥{{calculatePrice.toFixed(2)}}</span>
+        </div>
+        <div class="desc">
+          <span class="name">{{goodDetail.NAME}}</span>
+        </div>
+        <div class="sales">
+          <div class="delivery-price">运费: 0.00</div>
+          <div class="sale">月销548单</div>
+          <div class="plece">香港</div>
+        </div>
+        <div class="guarantee">
+          <div class="line"></div>
+          <div class="tax item" @click="showTaxDetail">
+            <van-row>
+              <van-col span="4">
+                <span class="type">税费</span>
+              </van-col>
+              <van-col span="16">
+                <span class="desc">进口税 商品售价已包税</span>
+              </van-col>
+              <van-col span="4" style="text-align:right">
+                <i class="iconfont icon-jiantou1"></i>
+              </van-col>
+            </van-row>
+          </div>
+          <div class="serve item" @click="showServeDetail">
+            <van-row>
+              <van-col span="4">
+                <span class="type">服务</span>
+              </van-col>
+              <van-col span="16">
+                <span class="desc">支持溯源·破损包退·正品保障</span>
+              </van-col>
+              <van-col span="4" style="text-align:right">
+                <i class="iconfont icon-jiantou1"></i>
+              </van-col>
+            </van-row>
+          </div>
+        </div>
+        <div class="line"></div>
+        <van-tabs swipeable sticky>
+          <van-tab title="详情">
+            <div class="detail-img" v-html="goodDetail.DETAIL"></div>
+          </van-tab>
+          <van-tab title="评论">
+            <div class="comments" style="height:600px">暂无评论</div>
+          </van-tab>
+        </van-tabs>
+        <!-- <div class="line"></div> -->
+      </div>
+      <!-- </div> -->
     </div>
     <div class="bottomBar">
       <van-goods-action>
@@ -213,7 +213,7 @@
 
 <script>
 import GoodService from "../service/good";
-import Bscroll from "better-scroll";
+// import Bscroll from "better-scroll";
 export default {
   components: {},
   layout: "login",
@@ -228,6 +228,10 @@ export default {
       showAbs: true,
       totalGoodInCart: "",
       messageConfig: {},
+      scrollTop: 0,
+      time: 0,
+      dParams: 20,
+      scrollState: 0,
       // goods: {
       //   title: "dasdsad",
       //   picture: "https://img.yzcdn.cn/1.jpg"
@@ -283,19 +287,19 @@ export default {
     goods() {
       return {
         title: this.goodDetail.NAME
-      }
+      };
     }
   },
   watch: {},
   created() {},
   mounted() {
-    this.setDomHeight();
+    // this.setDomHeight();
   },
   updated() {
-    this._initialScroll();
+    // this._initialScroll();
   },
   activated() {
-    this.getDetail()
+    this.getDetail();
     this.getCartCount();
   },
   methods: {
@@ -308,7 +312,7 @@ export default {
             }, 1500);
             this.goodDetail = res.data.good;
             this.sku.tree[0].v[0].imgUrl = this.goodDetail.IMAGE1;
-            this.sku.list[0].price = this.goodDetail.PRESENT_PRICE*100
+            this.sku.list[0].price = this.goodDetail.PRESENT_PRICE * 100;
           }
         })
         .catch(err => {
@@ -322,18 +326,18 @@ export default {
         this.totalGoodInCart = cartInfo.length > 0 ? cartInfo.length : "";
       }
     },
-    setDomHeight() {
-      let height = window.screen.height;
-      this.$refs.wrapper.style.height = height - 50 + "px";
-    },
-    _initialScroll() {
-      this.$nextTick(() => {
-        this.Bscroll = new Bscroll(this.$refs.wrapper, {
-          click: true,
-          probeType: 3
-        });
-      });
-    },
+    // setDomHeight() {
+    //   let height = window.screen.height;
+    //   this.$refs.wrapper.style.height = height - 50 + "px";
+    // },
+    // _initialScroll() {
+    //   this.$nextTick(() => {
+    //     this.Bscroll = new Bscroll(this.$refs.wrapper, {
+    //       click: true,
+    //       probeType: 3
+    //     });
+    //   });
+    // },
     back() {
       window.history.go(-1);
     },
@@ -350,7 +354,8 @@ export default {
       this.showServe = !this.showServe;
     },
     goTop() {
-      this.Bscroll.scrollToElement(this.$refs.wrapper, 600);
+      // this.Bscroll.scrollToElement(this.$refs.wrapper, 600);
+      document.body.scrollTop = 0;
     },
     showShopcart() {
       this.showCart = !this.showCart;
@@ -368,13 +373,13 @@ export default {
       let good = {
         goodsId: this.goodDetail.ID,
         selectedNum: 1,
-        messages: ''
-      }
-      this.onBuyClicked(good)
+        messages: ""
+      };
+      this.onBuyClicked(good);
     },
     onBuyClicked(good) {
-      this.onAddCartClicked(good)
-      this.$router.push('/shopcart')
+      this.onAddCartClicked(good);
+      this.$router.push("/shopcart");
     },
     onAddCartClicked(good) {
       //取出本地购物车中的商品
@@ -412,7 +417,9 @@ export default {
   min-height: 100%
   .header1
     position: fixed
-    display: flex
+    // display: flex
+    left: 0px
+    right: 0px
     color: #fff
     height: 3.75rem
     font-size: 1.25rem
@@ -427,14 +434,14 @@ export default {
       text-align: center
       line-height: 1.8rem
     .cart
-      position: relative
-      right: -290%
-    .more
-      position: relative
-      right: -310%
+      position: absolute
+      top: 16px
+      right: 10px
   .detail
-    position: relative
+    // position: relative
+    padding-bottom: 50px
     background: #eee
+    overflow: scroll
     .mainImg
       position: relative
       overflow: hidden
@@ -491,6 +498,7 @@ export default {
         color: #999
         justify-content: space-between
         padding: 0px 0.625rem
+        font-size: 10px
       .guarantee
         font-size: 14px
         margin-top: 10px
@@ -520,6 +528,7 @@ export default {
   .tax-pop
     height: 31.25rem
     border-radius: 10px 10px 0px 0px
+    font-size: 12px
     .container
       padding: 14px 10px
       display: flex
@@ -551,6 +560,7 @@ export default {
       padding: 14px 10px 14px 20px
       display: flex
       flex-direction: column
+      font-size: 12px
       .title
         height: 20px
         line-height: 20px

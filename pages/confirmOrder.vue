@@ -17,7 +17,7 @@
       >显示更多 / 添加地址</van-button>
       <div class="desc">店铺名称: Emall</div>
     </div>
-    <scroll class="scroll hook" ref="wrapper">
+    <div class="scroll hook" ref="wrapper">
       <div>
         <div class="item" v-for="(item, index) in cartInfo" :key="index">
           <van-card
@@ -29,7 +29,7 @@
           />
         </div>
       </div>
-    </scroll>
+    </div>
     <van-submit-bar
       :price="totalPrice"
       button-text="确认支付"
@@ -230,7 +230,8 @@ export default {
     border-bottom: 1px solid #eee
     background: #fff
   .scroll
-    magin-bottom: 50px
+    // padding-bottom: 50px
+    overflow: auto
   .newpage
     position: fixed
     left: 0px

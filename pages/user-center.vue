@@ -113,13 +113,13 @@ export default {
     handleClick(type) {
       this.show = false;
       if (type.indexOf("购物车") == 0) {
-        this.$router.push("./shopcart");
+        this.$router.push("/shopcart");
       }
       if (type.indexOf("订单") == 0) {
         UserService._checkLogin().then(res => {
           if (res.status === 200) {
             if (res.data.code === 0) {
-              this.$router.push("./orderList");
+              this.$router.push("/orderList");
             } else {
               this.$toast("请先登录");
             }

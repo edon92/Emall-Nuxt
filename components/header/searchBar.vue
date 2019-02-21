@@ -51,5 +51,9 @@ export default {
 .searchBar >>> .van-cell
   border-radius: 0.8rem
 .searchBar >>> .van-cell__value
+  position:relative
   display: flex
+.searchBar >>> .van-icon-clear
+  position: absolute
+  right: 3px
 </style>

@@ -127,10 +127,12 @@ export default {
           margin-top: -0.5rem
           top: 10%
           left: 4%
+          width: 30px
           background: #c60023
           color: #fff
           border-radius: 0.25rem
           opacity: 0.6
+          text-align: center
         .item-img
           max-width: 7rem
           height: 7rem
@@ -155,4 +157,5 @@ export default {
             right: -17px
             color: #888
             text-decoration: line-through
+            font-size: 12px
 </style>

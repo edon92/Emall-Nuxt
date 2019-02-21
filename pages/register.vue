@@ -237,6 +237,8 @@ export default {
       margin-right: 0.25rem
       color: #999
       text-align: right
+      .register
+        font-size: 12px
   .loading
     position: fixed
     top: 50%

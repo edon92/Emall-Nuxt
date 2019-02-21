@@ -22,10 +22,10 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .layout2
-  position: fixed
-  top: 0
-  left: 0
-  right: 0
-  bottom: 0
+  // position: relative
+  // top: 0px
+  // left: 0px
+  // right: 0px
+  // bottom: 0px
   background: #fff
 </style>

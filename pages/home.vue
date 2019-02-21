@@ -76,7 +76,7 @@ import Advertisement from "@/components/home/advertisement";
 import goodsInfo from "@/components/home/goodsInfo";
 import FloorOne from "@/components/home/floor1";
 import axios from "axios";
-import Bscroll from "better-scroll";
+// import Bscroll from "better-scroll";
 import UserService from "../service/user";
 import GoodService from "../service/good";
 export default {
@@ -104,6 +104,7 @@ export default {
     let {
       status,
       data: { data }
+      // 之类发布的时候要改掉
     } = await axios.get("http://localhost:3000/good/homeData");
     if (status === 200) {
       return {
@@ -113,8 +114,8 @@ export default {
   },
   created() {},
   mounted() {
-    this.setDomHeight()
-    this._initialScroll();
+    // this.setDomHeight()
+    // this._initialScroll();
   },
   methods: {
     setDomHeight() {
@@ -144,7 +145,6 @@ export default {
     z-index: 10
   .home-container
     margin-top: 3rem
-    height: 35rem
   .h-catogory
     padding: 0.5rem 0.3125rem
   .ad

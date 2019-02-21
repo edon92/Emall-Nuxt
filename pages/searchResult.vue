@@ -112,7 +112,8 @@ export default {
         align-items: center
   .search-detail
     margin-top: 50px
-    margin-bottom: 66px
+    // margin-bottom: 66px
+    padding-bottom: 60px
     .good
       padding: 4px 0px
       bottom-1px(#eee)

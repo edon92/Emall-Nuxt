@@ -64,7 +64,7 @@ router.get('/checkUser', async (ctx, next) => {
 
 router.get('/checkLogin',async (ctx, next) => {
   try {
-    if(JSON.stringify(ctx.session.passport) == '{}') {
+    if(ctx.session.passport.user == undefined) {
       ctx.body= {
         code: 10,
         msg: '请先登录',
@@ -114,8 +114,9 @@ router.get('/sendMsg', async (ctx, next) =>  {
       'CheckSum':CheckSum, 
       'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8', 
     }
-  }).then(res => {
-    const st = Store.hset('phonemsg', ko.phone, res.data.obj, 'expire', ko.expire)
+  }).then(async res => {
+    console.log(res)
+    const st = await Store.hset('phonemsg', ko.phone, res.data.obj, 'expire', ko.expire)
   })
   const numb = await Store.hget('phonemsg', ko.phone)
   ctx.body= {
@@ -124,6 +125,13 @@ router.get('/sendMsg', async (ctx, next) =>  {
     msg: '已经成功发送验证码'
   }
 })
+
+// router.get('/redis', async (ctx,next) => {
+//   await Store.hset('phonemsg', 13924844793, 4146, 'expire', 600)
+//   ctx.body= {
+//     code:0
+//   }
+// })
 
 router.post('/signin', async (ctx, next) => {
   return Passport.authenticate('local', function(err, user, info, status) {

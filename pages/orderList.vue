@@ -159,9 +159,12 @@ export default {
       height: 3.75rem
       line-height: 3.75rem
       background: #fafafa
+      font-size: 14px
       .goodInfo
         display: flex
         flex-wrap: nowrap
+        .GoodName
+          font-size: 14px
         img
           width: 60px
           height: 60px

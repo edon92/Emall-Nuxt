@@ -11,7 +11,7 @@ const router = new Router({
 
 router.get('/getUserAddress', async(ctx ,next) => {
   try {
-    if(JSON.stringify(ctx.session.passport) == '{}') {
+    if(ctx.session.passport.user == undefined) {
       ctx.body= {
         code: 10,
         msg: '请先登录!'
@@ -39,7 +39,7 @@ router.get('/getUserAddress', async(ctx ,next) => {
 
 router.post('/updateAddress', async (ctx, next) => {
   try {
-    if(JSON.stringify(ctx.session.passport) == '{}') {
+    if(ctx.session.passport.user == undefined) {
       ctx.body= {
         code: 10,
         msg: '请先登录!'
@@ -76,7 +76,7 @@ router.post('/updateAddress', async (ctx, next) => {
 
 router.post('/createOrder', async(ctx, next) => {
   try {
-    if(JSON.stringify(ctx.session.passport) == '{}') {
+    if(ctx.session.passport.user == undefined) {
       ctx.body= {
         code: 10,
         msg: '请先登录!'
@@ -119,7 +119,7 @@ router.post('/createOrder', async(ctx, next) => {
 
 router.post('/deleteAddress', async(ctx, next) => {
   // try {
-    if(JSON.stringify(ctx.session.passport) == '{}') {
+    if(ctx.session.passport.user == undefined) {
       ctx.body= {
         code: 10,
         msg: '请先登录!'
@@ -156,7 +156,7 @@ router.post('/deleteAddress', async(ctx, next) => {
 
 router.get('/getOrderList', async (ctx,next) => {
   try {
-    if(JSON.stringify(ctx.session.passport) == '{}') {
+    if(ctx.session.passport.user == undefined) {
       ctx.body= {
         code: 10,
         msg: '请先登录!'
@@ -185,7 +185,7 @@ router.get('/getOrderList', async (ctx,next) => {
 
 router.post('/createAddress', async (ctx, next) => {
   try {
-    if(JSON.stringify(ctx.session.passport) == '{}') {
+    if(ctx.session.passport.user == undefined) {
       ctx.body= {
         code: 10,
         msg: '请先登录!'
