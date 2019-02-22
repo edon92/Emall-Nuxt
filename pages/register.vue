@@ -222,9 +222,14 @@ export default {
   .van-nav-bar__text
     color: #888
 .container
+  position: absolute
+  top: 0px
+  bottom: 0px
+  right: 0px
+  left: 0px
   display: flex
   flex-direction: column
-  min-height: 100%
+  background: #fff
   .login
     margin-top: 2rem
     padding: 0 0.625rem
