@@ -139,4 +139,5 @@ export default {
     text-align: center
     line-height: 30px
     color: #fff
+    font-size: 12px
 </style>

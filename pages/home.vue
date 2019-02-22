@@ -145,6 +145,7 @@ export default {
     z-index: 10
   .home-container
     margin-top: 3rem
+    padding-bottom: 60px
   .h-catogory
     padding: 0.5rem 0.3125rem
   .ad

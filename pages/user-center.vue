@@ -99,7 +99,7 @@ export default {
       this.showUserInfo = false;
     },
     clickLogout() {
-      UserService._checkLogin().then(res => {
+      UserService._logout().then(res => {
         if (res.status === 200) {
           if (res.data.code === 0) {
             this.$toast("退出成功");

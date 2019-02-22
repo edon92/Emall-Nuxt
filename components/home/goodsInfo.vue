@@ -38,6 +38,7 @@ export default {
   overflow: hidden
   text-overflow: ellipsis
   white-space: nowrap
+  font-size: 12px
 .goods-price
   margin-top: 5px
   color: #f8762c

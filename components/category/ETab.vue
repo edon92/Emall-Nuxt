@@ -27,7 +27,6 @@ export default {
       if (!loadType) {
         this.$emit("selectedType", 5);
       } else {
-
         let active = this.typeList.findIndex(item => item == loadType)
         this.$emit('selectedType', 5-active )
         this.active = active

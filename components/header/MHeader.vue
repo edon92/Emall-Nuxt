@@ -49,7 +49,7 @@ export default {
       UserService._logout().then(res => {
         if(res.data.code === 0 ) {
           this.$toast(res.data.msg);
-          window.location.reload()
+          window.location.href = "http://www.edon-plus.com"; 
         }
       })
     }

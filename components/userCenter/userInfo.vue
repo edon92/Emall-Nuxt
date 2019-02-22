@@ -132,4 +132,6 @@ export default {
     text-align: center
     line-height: 30px
     color: #fff
+  .text-msg
+    color: #444
 </style>

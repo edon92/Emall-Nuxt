@@ -86,6 +86,7 @@ export default {
   mounted() {
     this._initialScroll();
     this._calulateLoadingPosition();
+    this._initialCategory()
   },
   methods: {
     _calulateLoadingPosition() {
@@ -97,6 +98,11 @@ export default {
       lodingDom.style.top = height / 2 + "px";
       lodingDom.style.marginLeft = "-15px";
       lodingDom.style.marginTop = "15px";
+    },
+    _initialCategory(){
+      if (this.$route.path == '/category') {
+        this.loadType(5);
+      }
     },
     loadData() {
       this.showLoading = false;
@@ -226,6 +232,7 @@ export default {
         text-align: center
         height: 50px
         line-height: 50px
+        font-size: 12px
         &:before
           border-color: #ccc
         &.active
