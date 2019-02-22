@@ -69,7 +69,7 @@
             <div class="detail-img" v-html="goodDetail.DETAIL"></div>
           </van-tab>
           <van-tab title="评论">
-            <div class="comments" style="height:600px">暂无评论</div>
+            <div class="comments" style="height:600px;font-size: 14px;">暂无评论</div>
           </van-tab>
         </van-tabs>
         <!-- <div class="line"></div> -->

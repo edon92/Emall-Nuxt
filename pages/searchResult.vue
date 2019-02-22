@@ -48,12 +48,12 @@ export default {
   watch: {
   },
   created() {},
-  mounted() {
+  activated() {
     this._initailData();
   },
   methods: {
     back() {
-      this.$router.back();
+      this.$router.push('/home');
     },
     toDetail(id) {
       this.$router.push(`/detail?goodsId=${id}`)

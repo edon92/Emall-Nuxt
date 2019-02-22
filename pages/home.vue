@@ -105,7 +105,7 @@ export default {
       status,
       data: { data }
       // 之类发布的时候要改掉
-    } = await axios.get("http://localhost:3000/good/homeData");
+    } = await axios.get("/good/homeData");
     if (status === 200) {
       return {
         HomeData: data
