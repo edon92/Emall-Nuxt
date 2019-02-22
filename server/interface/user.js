@@ -36,14 +36,14 @@ router.post('/register', async (ctx, next) => {
   }
 })
 
-router.get('/ttt', async(ctx, next) => {
-  let username = ctx.request.query.username
-  const numb = await Store.hget('usersData', username)
-  ctx.body= {
-    code: 0,
-    id: numb
-  }
-})
+// router.get('/ttt', async(ctx, next) => {
+//   let username = ctx.request.query.username
+//   const numb = await Store.hget('usersData', username)
+//   ctx.body= {
+//     code: 0,
+//     id: numb
+//   }
+// })
 
 
 router.get('/checkUser', async (ctx, next) => {
@@ -126,12 +126,12 @@ router.get('/sendMsg', async (ctx, next) =>  {
   }
 })
 
-// router.get('/redis', async (ctx,next) => {
-//   await Store.hset('phonemsg', 13924844793, 4146, 'expire', 600)
-//   ctx.body= {
-//     code:0
-//   }
-// })
+router.get('/redis', async (ctx,next) => {
+  await Store.hset('phonetest', 13924844793, 4146, 'expire', 600)
+  ctx.body= {
+    code:0
+  }
+})
 
 router.post('/signin', async (ctx, next) => {
   return Passport.authenticate('local', function(err, user, info, status) {

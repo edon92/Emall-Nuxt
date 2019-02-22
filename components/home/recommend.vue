@@ -133,6 +133,7 @@ export default {
           border-radius: 0.25rem
           opacity: 0.6
           text-align: center
+          font-size: 10px
         .item-img
           max-width: 7rem
           height: 7rem

@@ -38,15 +38,15 @@
     <div class="loading" v-show="showLoading">
       <van-loading type="spinner"/>
     </div>
-    <div class="loading2" v-show="showLoadingGoods" ref="loading2">
+    <!-- <div class="loading2" v-show="showLoadingGoods" ref="loading2">
       <van-loading type="spinner" color="#f8762c"/>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import ETab from "@/components/category/ETab";
-import Bscroll from "better-scroll";
+// import Bscroll from "better-scroll";
 import GoodsService from "../service/good";
 import Scroll from "@/common/components/scroll";
 import goodsInfo from "@/components/home/goodsInfo";
@@ -83,10 +83,13 @@ export default {
     }
   },
   created() {},
+  activated() {
+    console.log();
+    this._initialCategory();
+  },
   mounted() {
-    this._initialScroll();
-    this._calulateLoadingPosition();
-    this._initialCategory()
+    // this._initialScroll();
+    // this._calulateLoadingPosition();
   },
   methods: {
     _calulateLoadingPosition() {
@@ -99,8 +102,8 @@ export default {
       lodingDom.style.marginLeft = "-15px";
       lodingDom.style.marginTop = "15px";
     },
-    _initialCategory(){
-      if (this.$route.path == '/category') {
+    _initialCategory() {
+      if (this.$route.path == "/category") {
         this.loadType(5);
       }
     },
@@ -127,14 +130,21 @@ export default {
     scrollToEnd() {
       this.page++;
       this.loading = true;
-      this.showLoadingGoods = true;
+      // this.showLoadingGoods = true;
+      let timer = setTimeout(() => {
+        this.$toast.loading({})
+      },16)
       if (this.page >= this.maxPage) {
         this.finished = true;
         this.loading = false;
-        this.showLoadingGoods = false;
+        // this.showLoadingGoods = false;
+        clearTimeout(timer)
         return;
       }
       this.loadGoodsFromSub(this.currentId, this.page);
+      setTimeout(() => {
+        this.$refs.wrapper2.refresh();
+      }, 20);
       this.loading = false;
       // this.$toast('加载成功')
     },
@@ -163,12 +173,16 @@ export default {
     },
     loadGoodsFromSub(id, page) {
       this.finished = false;
-      if (!this.isRefresh) {
-        this.showLoadingGoods = true;
-      }
+      // if (!this.isRefresh) {
+      //   this.showLoadingGoods = true;
+      // }
       GoodsService._getGoodsList(id, page).then(res => {
-        this.showLoadingGoods = false;
+        // this.showLoadingGoods = false;
         this.isRefresh = false;
+        this.$refs.wrapper2.refresh();
+        setTimeout(() => {
+          this.$toast.clear();
+        }, 300);
         let timer = setTimeout(() => {
           this.isLoading = false;
         }, 500);
@@ -186,6 +200,7 @@ export default {
           }
         }
       });
+      this.$refs.wrapper2.refresh();
     },
     _initialScroll() {
       this.$nextTick(() => {
@@ -201,7 +216,10 @@ export default {
 .category >>> .van-pull-refresh
   @media only screen and (min-width: 568px)
     width: 225px
-.category
+body >>> .van-toast--middle
+  padding: 0px
+  opacity: .6
+.category 
   position: fixed
   width: 100%
   top: 0
@@ -256,8 +274,8 @@ export default {
     left: 50%
     margin-top: -0.5rem
     margin-left: -0.5rem
-  .loading2
-    position: fixed
+  // .loading2
+  //   position: fixed
     // top: 16.21875rem
     // left: 55%
     // margin-top: -0.5rem
