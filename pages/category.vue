@@ -84,7 +84,6 @@ export default {
   },
   created() {},
   activated() {
-    console.log();
     this._initialCategory();
   },
   mounted() {
@@ -103,6 +102,7 @@ export default {
       lodingDom.style.marginTop = "15px";
     },
     _initialCategory() {
+      this.showLoading = false
       if (this.$route.path == "/category") {
         this.loadType(5);
       }

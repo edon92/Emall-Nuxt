@@ -10,6 +10,7 @@ import mongoose from 'mongoose'
 import session from 'koa-generic-session'
 import Redis from 'koa-redis'
 import passport from './interface/utils/passport'
+import cors from 'koa2-cors'
 // import router from 'koa-router'
 const bodyParser = require('koa-bodyparser')
 
@@ -18,6 +19,16 @@ const app = new Koa()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
 
+app.use(cors({
+  origin: function (ctx) {
+      return 'http://www.edon-plus.com'; 
+  },
+  exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+  maxAge: 5,
+  credentials: true,
+  allowMethods: ['GET', 'POST', 'DELETE'],
+  allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
+}))
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
 config.dev = !(app.env === 'production')
