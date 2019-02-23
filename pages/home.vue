@@ -105,7 +105,7 @@ export default {
       status,
       data: { data }
       // 之类发布的时候要改掉
-    } = await axios.get("http://127.0.0.1:3000/good/homeData");
+    } = await axios.get("https://www.easy-mock.com/mock/5ae2eeb23fbbf24d8cd7f0b6/SmileVue/index");
     if (status === 200) {
       return {
         HomeData: data
